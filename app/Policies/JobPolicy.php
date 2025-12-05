@@ -63,9 +63,4 @@ class JobPolicy
     {
         return false;
     }
-
-    public function edit(User $user, Job $job): bool
-    {
-        return $job->employer->user->is($user);
-    }
 }

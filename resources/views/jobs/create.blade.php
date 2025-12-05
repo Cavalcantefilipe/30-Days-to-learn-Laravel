@@ -1,45 +1,23 @@
 <x-layout>
-    <x-slot:heading>
-        Create Job
-    </x-slot:heading>
+    <x-page-heading>New Job</x-page-heading>
 
+    <x-forms.form method="POST" action="/jobs">
+        <x-forms.input label="Title" name="title" placeholder="CEO" />
+        <x-forms.input label="Salary" name="salary" placeholder="$90,000 USD" />
+        <x-forms.input label="Location" name="location" placeholder="Winter Park, Florida" />
 
-    <form method="POST" action="/jobs">
-        @csrf
+        <x-forms.select label="Schedule" name="schedule">
+            <option>Part Time</option>
+            <option>Full Time</option>
+        </x-forms.select>
 
-        <div class="space-y-12">
-            <div class="border-b border-gray-900/10 pb-12">
-                <h2 class="text-base font-semibold leading-7 text-gray-900">Create a New Job</h2>
-                <p class="mt-1 text-sm leading-6 text-gray-600">We just need a handful of details from you.</p>
+        <x-forms.input label="URL" name="url" placeholder="https://acme.com/jobs/ceo-wanted" />
+        <x-forms.checkbox label="Feature (Costs Extra)" name="featured" />
 
-                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <x-form-field>
-                        <x-form-label for="title">Title</x-form-label>
-                        <div class="mt-2">
-                            <x-form-input name="title" id="title" placeholder="Shift Leader" required />
+        <x-forms.divider />
 
-                            <x-form-error name="title" />
-                        </div>
-                    </x-form-field>
+        <x-forms.input label="Tags (comma separated)" name="tags" placeholder="laracasts, video, education" />
 
-                    <x-form-field>
-                        <x-form-label for="salary">Salary</x-form-label>
-                        <div class="mt-2">
-                            <x-form-input name="salary" id="salary" placeholder="$50,000 USD" />
-
-                            <x-form-error name="salary" />
-                        </div>
-                    </x-form-field>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-6 flex items-center justify-end gap-x-6">
-            <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
-            <x-form-button>
-                Save
-            </x-form-button>
-        </div>
-    </form>
-
+        <x-forms.button type="submit">Publish</x-forms.button>
+    </x-forms.form>
 </x-layout>
